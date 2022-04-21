@@ -1,0 +1,39 @@
+@media (max-width: 550px) {
+  .content {
+    .section {
+      justify-content: center !important;
+      flex-direction: column !important;
+    }
+  }
+}
+
+.content {
+  width: 100vw;
+  padding: 0 2rem;
+
+  .title {
+    padding-bottom: 2rem;
+    font-size: 2rem;
+  }
+
+  .section {
+    display: flex;
+    padding: 2rem;
+    border-radius: 0.374rem;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+    .picture_holder {
+      width: 10rem;
+      height: 10rem;
+      border-radius: 50%;
+      background-color: whitesmoke;
+    }
+
+    .text_holder {
+      margin-left: 2rem;
+
+      div {
+        margin: 0.5rem 0;
+      }
+    }
+  }
+}

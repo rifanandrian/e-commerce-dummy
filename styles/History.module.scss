@@ -1,0 +1,55 @@
+.content {
+  padding: 0 2rem;
+  width: 100vw;
+
+  .title {
+    padding-bottom: 2rem;
+    font-size: 2rem;
+  }
+
+  .custom_table {
+    padding: 2rem;
+    border-radius: 0.374rem;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+    height: calc(100vh - 16rem);
+    overflow: overlay;
+
+    .table_head,
+    .table_body {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      .width_a {
+        width: 30%;
+      }
+      .width_b,
+      .width_c,
+      .width_d {
+        width: 20%;
+      }
+      .width_e {
+        width: 10%;
+      }
+    }
+
+    .table_body {
+      margin: 0.5rem 0;
+
+      button {
+        font-family: Viga;
+        min-height: 2.5rem;
+        border-radius: 0.375rem;
+        padding: 0.5rem;
+        color: goldenrod;
+        border-color: goldenrod;
+        background-color: transparent;
+      }
+
+      button:hover {
+        background-color: goldenrod;
+        color: black;
+        transition: 0.5s;
+      }
+    }
+  }
+}

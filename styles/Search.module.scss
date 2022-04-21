@@ -1,0 +1,35 @@
+.content {
+  width: 100vw;
+  padding: 0 2rem;
+
+  .filter_holder {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .result_filter {
+      display: flex;
+      align-items: center;
+      .button_close {
+        width: 1.5rem;
+        background: transparent;
+        border: 0;
+        cursor: pointer;
+        font-size: 0;
+      }
+
+      .button_close:hover {
+        color: goldenrod;
+      }
+    }
+
+    .select_filter {
+      display: flex;
+      justify-content: space-between;
+    }
+  }
+
+  .product_holder {
+    margin-top: 1rem;
+  }
+}
