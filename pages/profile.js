@@ -1,5 +1,5 @@
 import { useRouter } from 'next/router';
-import React, { useContext } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import Layout from '../components/Layout';
 import { Store } from '../utils/Store';
 import profileStyle from '../styles/Profile.module.scss';
@@ -8,8 +8,14 @@ export default function Profile() {
   const router = useRouter();
   const { state, dispatch } = useContext(Store);
   const { userInfo } = state;
+  const [user, setUser] = useState({});
 
-  console.log(userInfo);
+  useEffect(() => {
+    if (!userInfo) {
+      router.push('/login');
+    }
+    setUser(userInfo);
+  }, [router, userInfo]);
 
   return (
     <Layout>
@@ -19,25 +25,25 @@ export default function Profile() {
           <div className={profileStyle.picture_holder}></div>
           <div className={profileStyle.text_holder}>
             <div className="" id="username">
-              {userInfo.username}
+              {user.username}
             </div>
             <div className="" id="name">
-              {userInfo.name}
+              {user.name}
             </div>
             <div className="" id="email">
-              {userInfo.email}
+              {user.email}
             </div>
             <div className="" id="address">
-              {userInfo.address}
+              {user.address}
             </div>
             <div className="" id="city">
-              {userInfo.city}
+              {user.city}
             </div>
             <div className="" id="country">
-              {userInfo.country}
+              {user.country}
             </div>
             <div className="" id="zip_code">
-              {userInfo.zip_code}
+              {user.zip_code}
             </div>
           </div>
         </div>

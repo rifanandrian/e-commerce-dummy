@@ -15,7 +15,6 @@ const ShippingScreen = () => {
   const [dataUser, setDataUser] = useState({
     address: '',
   });
-  console.log(cart);
   const [dataCart, setDataCart] = useState({
     cartItems: [],
   });
