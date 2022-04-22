@@ -172,7 +172,10 @@ export default function Layout({ title, description, children }) {
                     </NextLink>
                   </div>
                 </div>
-                <div className={styles.drawer_logout}>
+                <div
+                  className={styles.drawer_logout}
+                  onClick={logoutClickHandler}
+                >
                   Logout{' '}
                   <FontAwesomeIcon
                     className={styles.icon_logout}
