@@ -2,12 +2,27 @@
   .content {
     .main_product_detail {
       grid-template-columns: unset !important;
+
+      .text_holder {
+        .btn_holder {
+          button {
+            width: 100%;
+            height: 4rem;
+            font-size: 1.5rem;
+          }
+        }
+      }
     }
     .description_holder {
       flex-direction: column;
 
       .basic_info_section {
+        margin-right: unset !important;
         width: 100% !important;
+      }
+
+      .description_section {
+        margin-left: unset !important;
       }
     }
   }
@@ -15,6 +30,7 @@
 
 .content {
   padding: 0 2rem;
+  width: 100vw;
   .main_product_detail {
     display: grid;
     grid-gap: 1rem;
@@ -171,6 +187,7 @@
     }
 
     .description_section {
+      padding: 0.5rem;
       margin-left: 0.5rem;
     }
   }
@@ -205,6 +222,8 @@
 
         .likes {
           display: flex;
+          height: 1rem;
+          align-items: center;
           .icon_likes {
             cursor: pointer;
             width: 1rem;

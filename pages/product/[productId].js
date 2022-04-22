@@ -51,19 +51,19 @@ export default function ProductScreen(props) {
           .then((res) => res.json())
           .then((data) => {
             setState({ ...state, product: data, loading: false });
+
+            // set image carousel
+            const dataImage = data.product_pictures.map((obj, idx) => ({
+              idx,
+              url: obj,
+            }));
+            setImages(dataImage);
           });
       } catch (err) {
         setState({ ...state, error: err.message, loading: false });
       }
     };
     fetchData();
-
-    setImages(
-      Array.from(Array(5).keys()).map((id) => ({
-        id,
-        url: `https://picsum.photos/1000?random=${id}`,
-      }))
-    );
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 

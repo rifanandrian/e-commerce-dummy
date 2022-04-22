@@ -4,6 +4,7 @@ import { environment } from '../environment/environment';
 import { Store } from '../utils/Store';
 import historyStyle from '../styles/History.module.scss';
 import { useRouter } from 'next/router';
+import Spinner from '../components/Spinner';
 
 const OrderHistory = () => {
   const router = useRouter();
@@ -20,6 +21,8 @@ const OrderHistory = () => {
       slug: '',
     },
   ]);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(false);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -31,8 +34,11 @@ const OrderHistory = () => {
             //   (x) => x.idUser == parseInt(userInfo.id)
             // );
             setDataHistory(data);
+            setLoading(false);
           });
-      } catch (err) {}
+      } catch (err) {
+        setError(err.message);
+      }
     };
     fetchData();
   }, []);
@@ -50,34 +56,40 @@ const OrderHistory = () => {
     <Layout>
       <div className={historyStyle.content}>
         <div className={historyStyle.title}>Order History</div>
-        <div className={historyStyle.custom_table}>
-          <div className={historyStyle.table_head}>
-            <div className={historyStyle.width_a}>Order Id</div>
-            <div className={historyStyle.width_b}>Date</div>
-            <div className={historyStyle.width_c}>Total</div>
-            <div className={historyStyle.width_d}>Status</div>
-            <div className={historyStyle.width_e}></div>
-          </div>
-
-          {dataHistory.map((obj, idx) => (
-            <div className={historyStyle.table_body} key={idx}>
-              <div className={historyStyle.width_a}>{obj.slug}</div>
-              <div className={historyStyle.width_b}>{obj.createdAt}</div>
-              <div className={historyStyle.width_c}>{obj.price}</div>
-              <div className={historyStyle.width_d}>{obj.status_payment}</div>
-              <div className={historyStyle.width_e}>
-                <button
-                  onClick={() => {
-                    router.push('/shipping?history=history');
-                    viewHIstoryOrderHandler(obj);
-                  }}
-                >
-                  View Details
-                </button>
-              </div>
+        {loading ? (
+          <Spinner />
+        ) : error ? (
+          <div className="">get data error</div>
+        ) : (
+          <div className={historyStyle.custom_table}>
+            <div className={historyStyle.table_head}>
+              <div className={historyStyle.width_a}>Order Id</div>
+              <div className={historyStyle.width_b}>Date</div>
+              <div className={historyStyle.width_c}>Total</div>
+              <div className={historyStyle.width_d}>Status</div>
+              <div className={historyStyle.width_e}></div>
             </div>
-          ))}
-        </div>
+
+            {dataHistory.map((obj, idx) => (
+              <div className={historyStyle.table_body} key={idx}>
+                <div className={historyStyle.width_a}>{obj.slug}</div>
+                <div className={historyStyle.width_b}>{obj.createdAt}</div>
+                <div className={historyStyle.width_c}>{obj.price}</div>
+                <div className={historyStyle.width_d}>{obj.status_payment}</div>
+                <div className={historyStyle.width_e}>
+                  <button
+                    onClick={() => {
+                      router.push('/shipping?history=history');
+                      viewHIstoryOrderHandler(obj);
+                    }}
+                  >
+                    View Details
+                  </button>
+                </div>
+              </div>
+            ))}
+          </div>
+        )}
       </div>
     </Layout>
   );

@@ -22,7 +22,9 @@ export default function Profile() {
       <div className={profileStyle.content}>
         <div className={profileStyle.title}>Profile</div>
         <div className={profileStyle.section}>
-          <div className={profileStyle.picture_holder}></div>
+          <div className={profileStyle.picture_holder}>
+            <div className={profileStyle.picture}></div>
+          </div>
           <div className={profileStyle.text_holder}>
             <div className="" id="username">
               {user.username}

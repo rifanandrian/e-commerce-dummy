@@ -42,7 +42,6 @@ export default function Layout({ title, description, children }) {
   }
 
   const sidebarOpenHandler = () => {
-    console.log('masuk');
     setSidebarVisible((prevState) => !prevState);
   };
 
@@ -138,7 +137,7 @@ export default function Layout({ title, description, children }) {
               </div>
             ) : (
               <NextLink href="/login" passHref>
-                <div className={styles.badge_container}>Login</div>
+                <div className={styles.login_text}>Login</div>
               </NextLink>
             )}
           </div>
@@ -148,7 +147,6 @@ export default function Layout({ title, description, children }) {
           onClose={sidebarOpenHandler}
           direction="left"
           size={250}
-          className="bla bla bla"
         >
           <div className={styles.drawer_content}>
             <div className={styles.drawer_head}>
@@ -156,27 +154,39 @@ export default function Layout({ title, description, children }) {
                 <div>E-Commerce</div>
               </NextLink>
             </div>
-            <div className={styles.drawer_body}>
-              <div className="">
-                <div className={styles.drawer_profile}>
-                  <NextLink href="/profile" passHref>
-                    <div>Profile</div>
-                  </NextLink>
+            {userInformation ? (
+              <div className={styles.drawer_body}>
+                <div className="">
+                  <div className={styles.drawer_profile}>
+                    <NextLink href="/profile" passHref>
+                      <div>Profile</div>
+                    </NextLink>
+                  </div>
+                  <div className={styles.drawer_history}>
+                    <NextLink href="/order-history" passHref>
+                      <div>Order History</div>
+                    </NextLink>
+                  </div>
                 </div>
-                <div className={styles.drawer_history}>
-                  <NextLink href="/order-history" passHref>
-                    <div>Order History</div>
-                  </NextLink>
+                <div className={styles.drawer_logout}>
+                  Logout{' '}
+                  <FontAwesomeIcon
+                    className={styles.icon_logout}
+                    icon={faPowerOff}
+                  />
                 </div>
               </div>
-              <div className={styles.drawer_logout}>
-                Logout{' '}
-                <FontAwesomeIcon
-                  className={styles.icon_logout}
-                  icon={faPowerOff}
-                />
+            ) : (
+              <div className={styles.drawer_body}>
+                <div className="">
+                  <div className={styles.drawer_profile}>
+                    <NextLink href="/login" passHref>
+                      <div>Login</div>
+                    </NextLink>
+                  </div>
+                </div>
               </div>
-            </div>
+            )}
           </div>
         </Drawer>
 

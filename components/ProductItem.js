@@ -18,19 +18,23 @@ export default function ProductItem({ product }) {
           />
         </div>
         <div className={productListStyles.text_holder}>
-          <div className={productListStyles.product_name}>
-            {product.product_name}
+          <div className="">
+            <div className={productListStyles.product_name}>
+              {product.product_name}
+            </div>
           </div>
-          <div className={productListStyles.product_price}>
-            Rp. {product.price}
-          </div>
-          <div className={productListStyles.product_rating}>
-            {product.rating > 5 ? 5 : product.rating}{' '}
-            <FontAwesomeIcon
-              className={productListStyles.icon_star}
-              icon={faStar}
-            />{' '}
-            | ({product.number_review} reviews)
+          <div className="">
+            <div className={productListStyles.product_price}>
+              Rp. {product.price}
+            </div>
+            <div className={productListStyles.product_rating}>
+              {product.rating > 5 ? 5 : product.rating}{' '}
+              <FontAwesomeIcon
+                className={productListStyles.icon_star}
+                icon={faStar}
+              />{' '}
+              | ({product.number_review} reviews)
+            </div>
           </div>
         </div>
       </div>
