@@ -66,6 +66,10 @@ export default function Layout({ title, description, children }) {
           {description && (
             <meta name="description" content={description}></meta>
           )}
+          <link
+            href="https://fonts.googleapis.com/css?family=Montserrat&display=optional"
+            rel="stylesheet"
+          />
           <link rel="icon" href="/favicon.ico" />
         </Head>
 
